@@ -1,4 +1,4 @@
-package com.gerini.pojo;
+package com.gerini.game;
 import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;

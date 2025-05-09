@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gerini.pojo.BattleField;
-import com.gerini.pojo.Coordinates;
+import com.gerini.game.BattleField;
+import com.gerini.game.Coordinates;
 
 @RestController
 public class FieldController {

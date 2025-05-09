@@ -1,4 +1,4 @@
-package com.gerini.pojo;
+package com.gerini.game;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 public class BattleField {

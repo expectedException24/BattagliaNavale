@@ -14,4 +14,19 @@ function createField(field){
 
     }
 }
-
+$.ajax({
+    url: 'getships',
+    method: 'GET',
+    success: function(response) {
+        console.log(response);
+        response.player.forEach(index => {
+            
+        });
+        response.computer.forEach(index => {
+            
+        });
+    },
+    error: function() {
+        alert('Errore nel caricamento delle griglie!');
+    }
+});
