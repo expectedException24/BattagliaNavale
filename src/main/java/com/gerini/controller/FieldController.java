@@ -1,5 +1,6 @@
 package com.gerini.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,5 +27,14 @@ public class FieldController {
         map.put("pcShips", game.getShipsOfPc());
         map.put("playerShips", game.getShips());
         return map;
+    }
+    @GetMapping("/attackships/{x}/{y}")
+    public boolean attackShips(@PathVariable("x") int x, @PathVariable("y") int y)throws IOException{
+        Coordinates c=new Coordinates(x,y);
+        try {
+            return game.managePlayerAttack(c);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
     }
 }

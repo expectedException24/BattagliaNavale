@@ -194,7 +194,7 @@ public class BattleField {
         Ship s = null;
         do {
             try {
-                Coordinates c = new Coordinates(rand.nextInt(10) + 1, rand.nextInt(10) + 1);
+                Coordinates c = new Coordinates(rand.nextInt(10), rand.nextInt(10));
                 s = createShip(c, size, rand.nextBoolean());
                 success = checkValidShipPosition(s, shipsToCheck);
             } catch (Exception e) {
