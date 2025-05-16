@@ -172,6 +172,7 @@ public class BattleField {
     }
 
     private List<Ship> createField(List<Ship> field) {
+        field.clear();
         field.add(getRandomShip(3, field));
         field.add(getRandomShip(3, field));
         field.add(getRandomShip(3, field));
