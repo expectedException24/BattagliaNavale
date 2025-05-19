@@ -2,22 +2,31 @@ $(document).ready(function () {
     document.getElementById("createButton").addEventListener('click', getships)
 });
 
-function createField(field) {
-    document.getElementById(field).innerHTML = '';
+function createPcField(){
+    document.getElementById("campoComp").innerHTML = '';
     for (let i = 0; i < 100; i++) {
         cell = document.createElement("div");
-        cell.addEventListener('click', function () {
+        cell.addEventListener('click', function (event) {
             attack(event);
         });
         cell.classList.add("cell");
         cell.setAttribute('data-index', i);
-        document.getElementById(field).appendChild(cell);
+        document.getElementById("campoComp").appendChild(cell);
     }
 }
 
+function createPlayerField(){
+    document.getElementById("campoUtente").innerHTML = '';
+    for (let i = 0; i < 100; i++) {
+        cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.setAttribute('data-index', i);
+        document.getElementById("campoUtente").appendChild(cell);
+    }
+}
 function attack(event) {
     
-    let x =Math.floor( event.target.dataset.index / 10);
+    let x = Math.floor( event.target.dataset.index / 10);
     let y = event.target.dataset.index % 10;
     //console.log(coordinate);
     $.ajax({
@@ -35,8 +44,8 @@ function attack(event) {
 
 
 function getships() {
-    createField("campoUtente");
-    createField("campoComp");
+    createPcField();
+    createPlayerField();
     $.ajax({
         url: 'getships',
         method: 'GET',

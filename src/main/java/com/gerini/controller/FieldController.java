@@ -31,6 +31,7 @@ public class FieldController {
     @GetMapping("/attackships/{x}/{y}")
     public boolean attackShips(@PathVariable("x") int x, @PathVariable("y") int y)throws IOException{
         Coordinates c=new Coordinates(x,y);
+        System.out.println(c);
         try {
             return game.managePlayerAttack(c);
         } catch (Exception e) {
