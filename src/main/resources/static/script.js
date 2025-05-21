@@ -25,23 +25,43 @@ function createPlayerField(){
     }
 }
 function attack(event) {
-    
-    let x = Math.floor( event.target.dataset.index / 10);
+    let target = event.target;
+    target.style.pointerEvents = 'none';
+    let x = Math.floor(event.target.dataset.index / 10);
     let y = event.target.dataset.index % 10;
-    //console.log(coordinate);
+    
     $.ajax({
-        url: 'attackships/'+x+'/'+y,
+        url: 'attackships/' + x + '/' + y,
+        method: 'GET',
+        success: function (response) {
+            console.log(response);
+            if(response){
+                target.classList.add('hit');
+            }else{
+                target.classList.add('water');
+            }
+        },
+        error: function () {
+            alert("Errore nell'attacco tu");
+        }
+    });
+
+    pcAttack();
+}
+
+function pcAttack() {
+    $.ajax({
+        url: 'attackpcships',
         method: 'GET',
         success: function (response) {
             console.log(response);
             
         },
         error: function () {
-            alert('Errore nell*attacco');
+            alert('Errore nell*attacco pc');
         }
     });
 }
-
 
 function getships() {
     createPcField();

@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gerini.game.BattleField;
-import com.gerini.game.Coordinates;
-import com.gerini.game.Ship;
+import com.gerini.game.*;
 
 @RestController
 public class FieldController {
@@ -34,6 +32,14 @@ public class FieldController {
         System.out.println(c);
         try {
             return game.managePlayerAttack(c);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
+    }
+    @GetMapping("/attackpcships")
+    public Hit attackShips()throws IOException{
+        try {
+            return game.pcAttack();
         } catch (Exception e) {
             throw new IOException(e);
         }

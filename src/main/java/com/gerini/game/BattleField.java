@@ -17,7 +17,7 @@ public class BattleField {
     private List<Hit> pcHitList = new ArrayList<>();
     @Getter
     private List<Hit> userHitList=new ArrayList<>();
-
+    
     private int l4 = 1;// corazzate
     private int l3 = 3;// sottomarini
     private int l2 = 3;// corvette
@@ -90,11 +90,11 @@ public class BattleField {
 
         try {
             if (haveAHit(ships, c)) {
-                hit.hasHit = true;
+                hit.setHasHit(true);
                 pcHitList.add(hit);
                 return hit;
             } else {
-                hit.hasHit = false;
+                hit.setHasHit(false);
                 pcHitList.add(hit);
                 return hit;
             }
@@ -147,7 +147,7 @@ public class BattleField {
     }
     private Boolean hasAlreadyTryed(Coordinates c,List<Hit> HitList) {
         for (Hit hit : HitList) {
-            if (hit.coordinateAttack.equals(c)) {
+            if (hit.getCoordinateAttack().equals(c)) {
                 return true;
             }
         }
@@ -268,12 +268,5 @@ public class BattleField {
         return s;
     }
 
-    @AllArgsConstructor
-    public class Hit {
 
-        @Getter
-        private Coordinates coordinateAttack;
-        @Getter
-        private Boolean hasHit;
-    }
 }

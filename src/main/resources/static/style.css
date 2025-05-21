@@ -8,10 +8,21 @@
     background-color: lightblue; 
 }
 
+
+
+.hit{
+    background-color: gray !important;
+}
+.water{
+    background-color: cadetblue !important;
+}
+
+
+
+
 .ship-1 {
     background-color: lightblue;
 }
-
 
 .ship-2 {
     background-color: red;
@@ -42,6 +53,6 @@
 }
 
 .ship-9 {
-    background-color: black;
+    background-color: gray;
 }
 
