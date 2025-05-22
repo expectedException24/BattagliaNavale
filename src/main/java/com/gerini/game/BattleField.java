@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public class BattleField {
@@ -16,8 +15,8 @@ public class BattleField {
     @Getter
     private List<Hit> pcHitList = new ArrayList<>();
     @Getter
-    private List<Hit> userHitList=new ArrayList<>();
-    
+    private List<Hit> userHitList = new ArrayList<>();
+
     private int l4 = 1;// corazzate
     private int l3 = 3;// sottomarini
     private int l2 = 3;// corvette
@@ -68,7 +67,7 @@ public class BattleField {
     }
 
     public boolean managePlayerAttack(Coordinates coordToAttack) throws IOException {
-        if(hasAlreadyTryed(coordToAttack,userHitList)){
+        if (hasAlreadyTryed(coordToAttack, userHitList)) {
             throw new IOException("Coordinate già tentate");
         }
         return haveAHit(shipsOfPc, coordToAttack);
@@ -85,7 +84,7 @@ public class BattleField {
         do {
             Random rand = new Random();
             c = new Coordinates(rand.nextInt(10), rand.nextInt(10));
-        } while (hasAlreadyTryed(c,pcHitList));
+        } while (hasAlreadyTryed(c, pcHitList));
         Hit hit = new Hit(c, null);
 
         try {
@@ -105,7 +104,7 @@ public class BattleField {
     }
 
     public void createPcField() {
-        if(shipsOfPc.isEmpty())
+        if (shipsOfPc.isEmpty())
             createField(shipsOfPc);
     }
 
@@ -130,22 +129,26 @@ public class BattleField {
     public List<Coordinates> getPcShipsCoordinates() {
         return getCords(shipsOfPc);
     }
-    public int hasAPlayerShipSunk(){
+
+    public int hasAPlayerShipSunk() {
         return witchShipSunk(ships);
     }
-    public int hasAEnemyShipSunk(){
+
+    public int hasAEnemyShipSunk() {
         return witchShipSunk(shipsOfPc);
     }
-    private int witchShipSunk(List<Ship> shipsToBo){
+
+    private int witchShipSunk(List<Ship> shipsToBo) {
         for (Ship ship : shipsToBo) {
-            if(ship.getCordinates().size()==0){
+            if (ship.getCordinates().size() == 0) {
                 shipsToBo.remove(ship);
                 return ship.getLenght();
             }
         }
         return -1;
     }
-    private Boolean hasAlreadyTryed(Coordinates c,List<Hit> HitList) {
+
+    private Boolean hasAlreadyTryed(Coordinates c, List<Hit> HitList) {
         for (Hit hit : HitList) {
             if (hit.getCoordinateAttack().equals(c)) {
                 return true;
@@ -173,18 +176,18 @@ public class BattleField {
 
     private List<Ship> createField(List<Ship> field) {
         field.clear();
-        field.add(getRandomShip(3, field));
-        field.add(getRandomShip(3, field));
-        field.add(getRandomShip(3, field));
-
-        field.add(getRandomShip(2, field));
-        field.add(getRandomShip(2, field));
-        field.add(getRandomShip(2, field));
-
-        field.add(getRandomShip(1, field));
-        field.add(getRandomShip(1, field));
-
-        field.add(getRandomShip(4, field));
+        for (int i = 0; i < l4; i++) {
+            field.add(getRandomShip(4, field));
+        }
+        for (int i = 0; i < l3; i++) {
+            field.add(getRandomShip(3, field));
+        }
+        for (int i = 0; i < l2; i++) {
+            field.add(getRandomShip(2, field));
+        }
+        for (int i = 0; i < l1; i++) {
+            field.add(getRandomShip(1, field));
+        }
         return field;
     }
 
@@ -267,6 +270,5 @@ public class BattleField {
         Ship s = new Ship(size, c, vertical);
         return s;
     }
-
 
 }
