@@ -55,10 +55,32 @@ function pcAttack() {
         method: 'GET',
         success: function (response) {
             console.log(response);
+            let x = response.coordinateAttack.x;
+            let y = response.coordinateAttack.y;
+            let index = x * 10 + y;
+            let cell = $('#campoUtente .cell').eq(index);
             
+            if(response.hasHit){
+                cell.addClass('hit');
+            } else {
+                cell.addClass('water');
+            }
         },
         error: function () {
-            alert('Errore nell*attacco pc');
+            alert('Errore nell\'attacco pc');
+        }
+    });
+}
+
+function pcAttack() {
+    $.ajax({
+        url: 'haswon',
+        method: 'GET',
+        success: function (response) {
+            if(response)
+        },
+        error: function () {
+            alert('Errore nell\'attacco pc');
         }
     });
 }
@@ -79,14 +101,15 @@ function getships() {
                 });
                 num++;
             });
-            num = 1;
+            /*num = 1;
             response.pcShips.forEach(ship => {
                 ship.cordinates.forEach(coord => {
                     let index = coord.x * 10 + coord.y;
                     $('#campoComp .cell').eq(index).addClass('ship-' + num);
                 });
                 num++;
-            });
+            });*/
+            
             /*
             response.pcShips.forEach(index => {
                 $('#campoUtente .cell').eq(index).addClass('ship');

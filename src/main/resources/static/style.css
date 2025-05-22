@@ -11,10 +11,10 @@
 
 
 .hit{
-    background-color: gray !important;
+    background-color: rgb(0, 0, 0) !important;
 }
 .water{
-    background-color: cadetblue !important;
+    background-color: blue !important;
 }
 
 
@@ -41,7 +41,7 @@
 }
 
 .ship-6 {
-    background-color: blue;
+    background-color: cadetblue;
 }
 
 .ship-7 {

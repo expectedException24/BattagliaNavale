@@ -15,7 +15,7 @@ import com.gerini.game.*;
 @RestController
 public class FieldController {
     private BattleField  game=new BattleField();
-    
+    public String eccezioni;
     
     @GetMapping("/getships")
     public HashMap<String,List<Ship>> getShips(){
@@ -27,21 +27,30 @@ public class FieldController {
         return map;
     }
     @GetMapping("/attackships/{x}/{y}")
-    public boolean attackShips(@PathVariable("x") int x, @PathVariable("y") int y)throws IOException{
+    public Boolean attackShips(@PathVariable("x") int x, @PathVariable("y") int y){
         Coordinates c=new Coordinates(x,y);
-        System.out.println(c);
         try {
             return game.managePlayerAttack(c);
         } catch (Exception e) {
-            throw new IOException(e);
+            eccezioni=e.getMessage();
+            return false;
         }
     }
     @GetMapping("/attackpcships")
-    public Hit attackShips()throws IOException{
+    public Hit attackShips(){
         try {
             return game.pcAttack();
         } catch (Exception e) {
-            throw new IOException(e);
+            eccezioni=e.getMessage();
+            return null;
         }
+    }
+    @GetMapping("/eccezione")
+    public String getEccezione(){
+        return eccezioni;
+    }
+    @GetMapping("/haswon")
+    public int hasWon(){
+        return game.winCheck();
     }
 }
