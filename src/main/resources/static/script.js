@@ -1,6 +1,8 @@
 $(document).ready(function () {
-    document.getElementById("createButton").addEventListener('click', getships)
+    document.getElementById("createButton").addEventListener('click', getships);
+    document.getElementById("reset").addEventListener('click', reset);
 });
+let gameEnded=false;
 
 function createPcField(){
     document.getElementById("campoComp").innerHTML = '';
@@ -25,6 +27,7 @@ function createPlayerField(){
     }
 }
 function attack(event) {
+    if(gameEnded)return;
     let target = event.target;
     target.style.pointerEvents = 'none';
     let x = Math.floor(event.target.dataset.index / 10);
@@ -42,11 +45,11 @@ function attack(event) {
             }
         },
         error: function () {
-            alert("Errore nell'attacco tu");
+
         }
     });
-
     pcAttack();
+    checkWin();
 }
 
 function pcAttack() {
@@ -67,24 +70,46 @@ function pcAttack() {
             }
         },
         error: function () {
-            alert('Errore nell\'attacco pc');
+            
         }
     });
 }
 
-function pcAttack() {
+function checkWin() {
     $.ajax({
         url: 'haswon',
         method: 'GET',
         success: function (response) {
-            if(response)
+            switch(response){
+                case 1:
+                    gameEnded=true;
+                    document.getElementById("messages").innerText='hai perso';
+                    break;
+                case 2:
+                    gameEnded=true;
+                    document.getElementById("messages").innerText='hai vinto';
+                    break;
+            }
         },
         error: function () {
-            alert('Errore nell\'attacco pc');
+            
         }
     });
 }
-
+function reset(){
+    gameEnded=false;
+    document.getElementById("messages").innerText='clicca sulla cella nemica che vuoi attaccare';
+$.ajax({
+        url: 'reset',
+        method: 'GET',
+        success: function () {
+            getships();
+        },
+        error: function () {
+            
+        }
+    });
+}
 function getships() {
     createPcField();
     createPlayerField();
@@ -110,14 +135,6 @@ function getships() {
                 num++;
             });*/
             
-            /*
-            response.pcShips.forEach(index => {
-                $('#campoUtente .cell').eq(index).addClass('ship');
-            });
-            response.playerShips.forEach(index => {
-                $('#campoComp .cell').eq(index).addClass('ship');
-            });
-            */
         },
         error: function () {
             alert('Errore nel caricamento delle griglie!');

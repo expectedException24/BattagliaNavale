@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gerini.game.*;
 
+
 @RestController
 public class FieldController {
     private BattleField  game=new BattleField();
@@ -52,5 +53,9 @@ public class FieldController {
     @GetMapping("/haswon")
     public int hasWon(){
         return game.winCheck();
+    }    
+    @GetMapping("/reset")
+    public void reset(){
+        this.game=new BattleField();
     }
 }
