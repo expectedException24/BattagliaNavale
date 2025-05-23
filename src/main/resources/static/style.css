@@ -1,4 +1,4 @@
-/* Corpo e tipografia */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to bottom right, #e3f2fd, #bbdefb);
@@ -8,7 +8,7 @@ body {
   text-align: center;
 }
 
-/* Messaggi */
+
 #messages {
   margin: 1rem auto;
   padding: 0.8rem 1.2rem;
@@ -20,7 +20,7 @@ body {
   font-weight: 500;
 }
 
-/* Bottoni */
+
 button {
   font-size: 1rem;
   padding: 0.6rem 1.2rem;
@@ -29,7 +29,7 @@ button {
   transition: background-color 0.3s;
 }
 
-/* Griglie */
+
 .grid-custom {
   display: grid;
   grid-template-columns: repeat(10, 40px);
@@ -46,7 +46,6 @@ button {
 .cell {
   width: 40px;
   height: 40px;
-  background-color: #dee2e6;
   border-radius: 4px;
   transition: background-color 0.2s;
   border: 1px solid #ccc;
@@ -60,12 +59,11 @@ button {
   cursor: pointer;
 }
 
-/* Navi */
+
 .ship {
   background-color: lightblue;
 }
 
-/* Stato colpi */
 .hit {
   background-color: rgb(0, 0, 0) !important;
 }
@@ -74,13 +72,13 @@ button {
   background-color: blue !important;
 }
 
-/* Colori per navi diverse */
-.ship-1 { background-color: lightblue !important; }
-.ship-2 { background-color: red !important; }
-.ship-3 { background-color: yellow !important; }
-.ship-4 { background-color: green !important; }
-.ship-5 { background-color: purple !important; }
-.ship-6 { background-color: cadetblue !important; }
-.ship-7 { background-color: pink !important; }
-.ship-8 { background-color: coral !important; }
-.ship-9 { background-color: gray !important; }
+
+.ship-1 { background-color: lightblue ; }
+.ship-2 { background-color: red ; }
+.ship-3 { background-color: yellow ; }
+.ship-4 { background-color: green ; }
+.ship-5 { background-color: purple ; }
+.ship-6 { background-color: cadetblue ; }
+.ship-7 { background-color: pink ; }
+.ship-8 { background-color: coral ; }
+.ship-9 { background-color: gray ; }

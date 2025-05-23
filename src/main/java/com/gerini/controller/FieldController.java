@@ -23,7 +23,7 @@ public class FieldController {
         HashMap<String,List<Ship>> map=new HashMap<>();
         game.createPcField();
         game.createRandomPlayerField();
-        map.put("pcShips", game.getShipsOfPc());
+        //map.put("pcShips", game.getShipsOfPc());
         map.put("playerShips", game.getShips());
         return map;
     }

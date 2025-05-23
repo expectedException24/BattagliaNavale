@@ -37,7 +37,6 @@ function attack(event) {
         url: 'attackships/' + x + '/' + y,
         method: 'GET',
         success: function (response) {
-            console.log(response);
             if(response){
                 target.classList.add('hit');
             }else{
@@ -57,7 +56,6 @@ function pcAttack() {
         url: 'attackpcships',
         method: 'GET',
         success: function (response) {
-            console.log(response);
             let x = response.coordinateAttack.x;
             let y = response.coordinateAttack.y;
             let index = x * 10 + y;
@@ -117,7 +115,6 @@ function getships() {
         url: 'getships',
         method: 'GET',
         success: function (response) {
-            console.log(response);
             let num = 1;
             response.playerShips.forEach(ship => {
                 ship.cordinates.forEach(coord => {
